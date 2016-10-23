@@ -2,6 +2,5 @@
 - name: Install ghq
   go:
     name: github.com/motemen/ghq
-    executable: /usr/local/go/bin/go
   environment:
     GOPATH: "{{ansible_env.HOME}}/.go"
