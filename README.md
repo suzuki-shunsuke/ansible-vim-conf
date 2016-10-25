@@ -21,7 +21,7 @@ The directory structure of the repository where your vim config is hosted must b
 Role Variables
 --------------
 
-* vim_conf_ghq_executable: The executable path of ghq command. The default is "ghq".
+* ghq_executable: The executable path of ghq command. The default is "ghq".
 * remote_repository_path: The remote repository where your vim config is hosted.
 * vim_conf_force: Create the link even if the dest file does not exist. The default is "no".
 
@@ -36,7 +36,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   vars:
-    vim_conf_ghq_executable: /home/vagrant/.go/bin/ghq
+    ghq_executable: /home/vagrant/.go/bin/ghq
   roles:
   - role: suzuki-shunsuke.vim-conf
     remote_repository_path: suzuki-shunsuke/vim.conf
