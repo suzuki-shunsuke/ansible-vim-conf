@@ -1,9 +1,5 @@
 ---
 # tasks file for vim-conf
-- name: ghq root
-  shell: /home/vagrant/.go/bin/ghq root
-  register: ghq_root
-  changed_when: false
 - name: mkdir .vimundo
   file:
     path: "{{ansible_env.HOME}}/.vimundo"
@@ -12,6 +8,10 @@
   ghq:
     name: "{{remote_repository_path}}"
     executable: "{{ghq_executable}}"
+- name: ghq root
+  shell: "{{ansible_env.HOME}}/.go/bin/ghq root"
+  register: ghq_root
+  changed_when: false
 - include: create_link.yml
   with_items:
   - .vim
