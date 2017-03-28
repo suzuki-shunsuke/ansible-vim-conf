@@ -5,6 +5,8 @@ vim-conf
 
 Install your vim config hosted on the Github.
 
+https://galaxy.ansible.com/suzuki-shunsuke/vim-conf/
+
 Requirements
 ------------
 
