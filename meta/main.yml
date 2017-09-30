@@ -1,17 +1,13 @@
 galaxy_info:
   author: Suzuki Shunsuke
-  description: Install your vim config hosted on the Github.
+  description: ansible role to install vim configurations hosted on the Github
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.2
   github_branch: master
-
   platforms:
-  - name: GenericLinux
-    versions:
-    - all
-
+    - name: GenericLinux
+      versions:
+        - all
   galaxy_tags:
-  - vim
-
-dependencies:
-- suzuki-shunsuke.ghq-module
+    - vim
+dependencies: []

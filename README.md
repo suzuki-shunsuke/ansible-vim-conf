@@ -1,16 +1,12 @@
-vim-conf
-=========
+# ansible-vim-conf
 
 [![Build Status](https://travis-ci.org/suzuki-shunsuke/ansible-vim-conf.svg?branch=master)](https://travis-ci.org/suzuki-shunsuke/ansible-vim-conf)
 
-Install your vim config hosted on the Github.
+ansible role to install vim configurations hosted on the Github.
 
 https://galaxy.ansible.com/suzuki-shunsuke/vim-conf/
 
-Requirements
-------------
-
-* [motemen/ghq](https://github.com/motemen/ghq)
+## Requirements
 
 The directory structure of the repository where your vim config is hosted must be in the following manner.
 
@@ -20,31 +16,31 @@ The directory structure of the repository where your vim config is hosted must b
   .vim
 ```
 
-Role Variables
---------------
+## Role Variables
 
-* ghq_executable: The executable path of ghq command. The default is "ghq".
-* remote_repository_path: The remote repository where your vim config is hosted.
-* vim_conf_force: Create the link even if the dest file does not exist. The default is "no".
+name | required | default | description
+--- | --- | --- | ---
+vim_conf_repo | yes | |
+vim_conf_cloned_dest | yes | |
+vim_conf_undodir | no | | vim's undodir path. If this variable is set, this directory is created
+vim_conf_version | no | HEAD |
 
-Dependencies
-------------
+## Dependencies
 
-* [suzuki-shunsuke.ghq-module](https://galaxy.ansible.com/suzuki-shunsuke/ghq-module/)
+Nothing.
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yaml
 - hosts: servers
-  vars:
-    ghq_executable: /home/vagrant/.go/bin/ghq
   roles:
   - role: suzuki-shunsuke.vim-conf
-    remote_repository_path: suzuki-shunsuke/vim.conf
+    vim_conf_repo: "https://github.com/suzuki-shunsuke/vim.conf"
+    vim_conf_cloned_dest: "{{ansible_env.HOME}}/repos/src/github.com/suzuki-shunsuke/vim.conf"
+    vim_conf_undodir: "{{ansible_env.HOME}}/.vimundo"
+    vim_conf_version: develop
 ```
 
-License
--------
+## License
 
-MIT
+[MIT](LICENSE)

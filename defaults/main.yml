@@ -1,4 +1,2 @@
----
 # defaults file for vim-conf
-ghq_executable: ghq
-vim_conf_force: no
+vim_conf_version: HEAD
