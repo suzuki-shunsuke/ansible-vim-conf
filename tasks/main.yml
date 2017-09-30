@@ -1,18 +1,19 @@
----
 # tasks file for vim-conf
 - name: mkdir .vimundo
   file:
-    path: "{{ansible_env.HOME}}/.vimundo"
+    path: "{{vim_conf_undodir}}"
+    state: directory
+  when: vim_conf_undodir is defined
+- name: mkdir repo's parent directory
+  file:
+    path: "{{vim_conf_cloned_dest|dirname}}"
     state: directory
 - name: Clone the vim config repository
-  ghq:
-    name: "{{remote_repository_path}}"
-    executable: "{{ghq_executable}}"
-- name: ghq root
-  shell: "{{ansible_env.HOME}}/.go/bin/ghq root"
-  register: ghq_root
-  changed_when: false
+  git:
+    repo: "{{vim_conf_repo}}"
+    dest: "{{vim_conf_cloned_dest}}"
+    version: "{{vim_conf_version}}"
 - include: create_link.yml
   with_items:
-  - .vim
-  - .vimrc
+    - .vim
+    - .vimrc
